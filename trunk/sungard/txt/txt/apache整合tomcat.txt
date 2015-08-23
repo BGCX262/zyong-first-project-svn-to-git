@@ -1,0 +1,14 @@
+Windows下Apache与Tomcat的整合
+
+1、 Apache 2.2.4
+下载地址：http://cztele1.skycn.com/down/apache_2.2.4-win32-x86-no_ssl.zip
+
+2、 Tomcat 6.0.16
+下载地址：http://apache.mirror.phpchina.co ... e-tomcat-6.0.16.zip
+
+3、 JDK
+下载地址：http://cds.sun.com/is-bin/INTERS ... -windows-i586-p.exe
+如果只是应用的话，也可以选择安装JRE，因为JRE比较小：）
+
+4   JK-1.2.26-httpd-2.2.4
+下载地址：http://www.apache.org/dist/tomca ... 2.26-httpd-2.2.4.so

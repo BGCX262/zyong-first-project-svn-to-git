@@ -1,0 +1,25 @@
+//本文件是协议设计或编制的进行设计的
+NAME= ${funcDef.name}
+AUTHOR=${funcDef.author}
+VERSION=${funcDef.version}
+REQUESTTYPE=$!{funcDef.funcode}
+
+[IN]
+//IN] 表示请求包的字段结构定义开始
+//<字段名称>='<无 或 所属entry类别码>',<字段参数说明>
+#foreach($FuncParam in ${LIST1}) 
+${FuncParam.name}='',$!FuncParam.description
+#end
+
+[OUT from_source]
+// [OUT xxxxx] 表示一个新的应答返回格式定义
+// <字段名称>='<无 或 所属entry类别码>',<字段参数说明>
+#foreach($FuncParam in ${LIST2}) 
+${FuncParam.name}='',$!FuncParam.label
+#end
+//功能还待完善！！！
+测试模版
+FUNC490019
+funcDefTemplateHook
+
+FILENAME + '.' + FILETYPE

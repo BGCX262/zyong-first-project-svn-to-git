@@ -1,0 +1,119 @@
+建立bat文件
+C:\"Program Files"\MySQL\"MySQL Server 5.5"\bin\mysqldump.exe -uroot -proot -h10.253.42.72 yckh > c:\yckh01.sql
+
+C:\"Program Files"\MySQL\"MySQL Server 5.5"\bin\mysql.exe -uroot -proot yckh2 < c:\yckh01.sql
+
+
+rem 删除生成的备份文件
+del c:\yckh01.sql
+
+
+首先最大的注意点:直接cmd进入控制台执行mysqldump,不能进入mysql的bin执行,不然会出错!
+解决乱码
+设置数据库字符集类型和引擎类型
+mysqld --default-storage-engine=innodb --character-set-server=UTF8
+查看数据库引擎：
+show engines;
+
+alter table tablename type='?'
+查看字符集编码：
+show variables like 'character_set_%'
+show variables like 'collation_%'
+查看默认编码
+mysql --help|grep character -set
+
+解压版mysql没有my.ini文件 需要手动创建
+[WinMySQLAdmin] 
+ # 指定mysql服务启动启动的文件
+ Server=E:\\myserver\\mysql-5.0.37-win32\\bin\\mysqld-nt.exe
+  
+ [mysqld] 
+ # 设置mysql的安装目录 
+ basedir=E:\\myserver\\mysql-5.0.37-win32
+ # 设置mysql数据库的数据的存放目录，必须是data，或者是\\xxx\data 
+ datadir=E:\\myserver\\mysql-5.0.37-win32\\data
+ # 设置mysql服务器的字符集
+ default-character-set=gbk
+  
+ [client]
+ # 设置mysql客户端的字符集
+ default-character-set=gbk
+
+C:\developTools\mysql-5.0.22-win32\bin>mysqldump -uroot -p1234 --default-charact
+er-set=gbk --skip-opt test securities_jkglyy_funcdef> test.sql
+需要设置字符集
+一法:密码分开备份,不指定备份到的目的地
+C:\Documents and Settings\Administrator>mysqldump -u root -p sales > sales.sql
+
+Enter password: ***********
+
+这种写法被备份到了 C:\Documents and Settings\Administrator 目录下,上图的sales是数据库名,
+
+二法:密码不分开,指定备份目的地
+C:\Documents and Settings\Administrator>mysqldump -u root -priskfitfeng sales > E:\sales.sql
+
+
+注意root是用户名,riskfitfeng是密码
+
+可能的异常:
+C:\Documents and Settings\Administrator>mysqldump -h 192.168.1.128 -u user -p stock > E:\stock.sql;
+
+Enter password: ****
+
+mysqldump: Couldn't find table: ";"
+
+
+ 
+
+原因是 最后面不能有 ; 号
+
+备份远程数据库
+
+备份远程数据库到远程的主机上:
+
+使用putty连接上远程主机,同理只需登入远程系统即可,不需要进入mysql的bin
+
+
+[root@localhost ~]# mysqldump -u user  -p stock > stock.sql
+
+
+和windows上的命令一样
+
+备份远程数据库到本地:
+
+mysqldump -h 192.168.1.128 -u user -p stock > E:\stock.sql
+
+ 
+
+导入数据命令 : 
+
+mysql -u root -p trade_supplier_development < insertdata.txt 
+
+
+
+导入一般命为 .txt , 导出 命为 .sql , 速度快~!
+
+主要两个注意点:
+
+1,不要进入mysql的bin,直接cmd进入console执行
+
+2,语句后面不要有 ; 号
+
+ref:
+
+http://www.blogjava.net/xmp123/archive/2007/03/02/101348.html
+
+http://zhidao.baidu.com/question/78171579.html?fr=qrl&fr2=query
+
+http://blog.sina.com.cn/s/blog_3f56d7800100c7r6.html
+
+
+
+
+
+
+
+
+
+把mysql表中一个字段数据复制到另外一个字段
+update table name set column1=column2  首先确保数据类型和长度相同

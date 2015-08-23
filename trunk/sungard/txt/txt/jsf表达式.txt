@@ -1,0 +1,68 @@
+jsf表达式
+JSF的表达式语言(EL)的形式跟jSP的表达式语言的形式类似：#{...}。EL的主要用途是使你可以引用和更新bean的属性，或者执行简单的语句，而不用写完整的Java代码。
+l JSF EL基于JSP 2.0中的表达式语言，它的用法几乎跟JSP2.0中的表达式语言一样，但二者仍有一些关键不同：
+l JSF使用(#)来标记表达式的开始，而JSP使用($)；
+l JSF表达式是双向的。即它可以引用属性的值也可以更新之；
+l JSF EL也允许引用对象方法；
+l 某些JSP特定的特征无效，比如页面上下文范围(page)；
+l JSF EL表达式可以通过常规Java代码求解(结果是可以不需要JSP)；
+l JSF EL不官方支持函数。
+JSF EL也支持“.”和“[]”取值。它支持全范围的算术运算、逻辑运算与关系运算：
+
+1．      算术运算有：
+加法 (+), 减法 (-), 乘法 (*), 除法 (/ or div) 与余除 (% or mod) 。下面是算术运算的一些例子：表达式	结果
+#{1}	1
+#{1 + 2}	3
+#{1.2 + 2.3}	3.5
+#{1.2E4 + 1.4}	12001.4
+#{-4 - 2}	-6
+#{21 * 2}	42
+#{3 / 4}	0.75
+#{3 div 4}	0.75，除法
+#{3 / 0}	Infinity
+#{10 % 4}	2
+#{10 mod 4}	2，也是求模
+#{(1 == 2) ? 3 : 4}	4
+
+如同在Java语法一样 ( expression ? result1 : result2）是个三元运算，expression为true显示result1，false显示result2。
+
+
+2． 逻辑运算：
+and(或&&)、or(或!!)、not(或!)。一些例子为：表达式	结果
+#{true and false}	false
+#{true or false}	true
+#{not true}	false
+
+
+3． 关系运算：
+小于Less-than(<、lt)、大于Greater-than (>、gt)、小于或等于Less-than-or-equal(<=、le)、大于或等于Greater-than-or-equal(& gt;=、ge)、等于Equal(==、eq)、不等于Not Equal(!=、ne)，由英文名称可以得到lt、gt等运算子之缩写词，以下是一些例子：表达式	结果
+#{1 < 2}	true
+#{1 lt 2}	true
+#{1 > (4 / 2)}	false
+#{1 > (4 / 2)}	false
+#{4.0 >= 3}	true
+#{4.0 ge 3}	true
+#{4 <= 3}	false
+#{4 le 3}	false
+#{100.0 == 100}	true
+#{100.0 eq 100}	true
+#{(10 * 10) != 100}	false
+#{(10 * 10) ne 100}	false
+
+关系运算也可以用来比较字符或字符串，按字典顺序来决定比较结果，例如：表达式	结果
+#{'a' < 'b'}	true
+#{'hip' > 'hit'}	false
+#{'4' > 3}	true
+
+
+4． Empty：
+用来测试空值(null、空字符串、数组、Map或者没有值的Collection)，如：表达式	结果
+#{empty ''}	true
+#{empty 'abcd'}	false
+
+JSF EL能搜索Java Web应用的三个范围：application、session、request中以匹配特定关键字的对象。
+因为JSF一定要锁定到JSP，所以它不支持 page范围。JSF EL支持的隐含变量有：
+cookie、header、headerValues、initParam、param、paramValues、 applicationScope、sessionScope、requestScope、
+还有facesContext(当前请求的 FacesContext实例)和view(当前视图)。
+
+

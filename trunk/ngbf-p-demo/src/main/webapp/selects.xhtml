@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:v="urn:schemas-microsoft-com:vml">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+<!--<h:form>
+xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	<h:panelGrid columns="2" cellpadding="5">
+		<h:outputText value="Counter: " />
+		<h:outputText id="txt_count" value="#{cityBean.count}" />		
+	</h:panelGrid>
+
+    <p:commandButton value="Count"
+				actionListener="#{cityBean.increment}" update="txt_count"/>
+</h:form>-->
+	 <h:form>
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:panel header="Double Combo" >
+			  <h:panelGrid columns="2" cellpadding="5">
+			  <h:outputLabel value="City:" for ="city"/>
+            <p:selectOneMenu id="city" value="#{cityBean.city}">
+                <f:selectItem itemLabel="Select City" itemValue="" />
+                <f:selectItems value="#{cityBean.cities}" />
+                <p:ajax update="suburbs1"
+                        listener="#{cityBean.handleCityChange}" />
+            </p:selectOneMenu>
+			  <h:outputLabel value="Suburb:" for ="aa"/>
+				<h:outputText value="#{cityBean.suburbs}" id="aa"/>
+            <p:selectOneMenu id="suburbs1" value="#{cityBean.suburb}">
+                <f:selectItem itemLabel="Select Suburb" itemValue="" />
+                <f:selectItems value="#{cityBean.suburbs}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+
+	 
+
+
+			<p:separator />
+			<p:commandButton value="Submit" update="msgs"
+				actionListener="#{cityBean.displayLocation}" id="btnSubmit">
+			</p:commandButton>
+	 
+		</p:panel>
+	</h:form> 
+</h:body>
+</html>

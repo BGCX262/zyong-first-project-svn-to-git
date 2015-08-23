@@ -1,0 +1,17 @@
+双击单元格可编辑
+
+
+账户信息查询和账户申请查询里面  在本地是没有错误
+
+在服务器段出现错误，提示distribute_code不能由long转为string
+
+
+显示是dict里面数据转换错误
+
+ExcelDataExport 没有try捕捉异常  对异常进行处理
+
+ICEfaces rendering required  报错 是因为使用p:ajax时  update对应的是联动菜单，已经在请求时给值  又update一次  出错
+
+
+使用hotkey时  如果input输入域中有required属性，这个快捷键会不执行。。  不知道原因
+

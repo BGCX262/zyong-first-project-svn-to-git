@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP file for ICEpdf Viewer application demo -->
+<jnlp
+    spec="1.0+"
+    codebase="http://res.icesoft.org/demo/jws/"
+    href="icepdf.jnlp">
+    <information>
+        <title>ICEpdf Viewer Demo</title>
+        <vendor>ICEsoft Technologies, Inc.</vendor>
+        <homepage>http://www.icepdf.org</homepage>
+        <description>ICEpdf Viewer Demo</description>
+        <description kind="one-line">ICEsoft's ICEpdf Viewer</description>
+        <description kind="short">A reference implementation of ICEsoft's ICEpdf</description>
+        <description kind="tooltip">ICEsoft's ICEpdf</description>
+        <icon href="images/icepdf-logo-release-notes.gif" width="81" height="100"/>
+        <offline-allowed/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.5.0+"/>
+	      <property name="sun.java2d.d3d" value="true"/>
+        <jar href="signed_trial/icepdf.jar" main="true"/>
+    </resources>
+    <application-desc main-class="org.icepdf.ri.viewer.Main">
+        <argument>-loadurl</argument>
+        <argument>http://res.icesoft.org/demo/examples/EV-FD-M760_M760-E-2270.pdf</argument>
+    </application-desc>
+</jnlp>

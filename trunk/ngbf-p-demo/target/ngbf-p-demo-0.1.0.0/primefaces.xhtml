@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:v="urn:schemas-microsoft-com:vml">
+
+<h:head>
+
+
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid>
+			<h:outputLabel for="name" value="name" style="font-weight:bold"></h:outputLabel>
+			<p:inputText id="name" value="#{pprBean.firstname}"></p:inputText>
+			<p:commandButton value="Submit" update="display"/>
+			<h:outputText value="#{pprBean.firstname}" id="display"/>
+		</h:panelGrid>
+		
+	</h:form>
+	<h:form id="form">
+		 <p:panel id="panel" header="New User" style="margin-bottom:10px">
+  			<p:messages id="messages" />
+  			
+ 			<h:panelGrid column="4">
+				<h:outputLabel for="firstname" value="FirstName:*"/>
+				<h:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+				<f:validateLength minimum="2"/>
+				</h:inputText>
+				<p:message for="firstname"/>
+			<h:outputText value="#{pprBean.firstname}"/>
+			
+	 	<h:outputLabel for="surname" value="Surname:*"/>
+			<p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+			<p:message for="surname"/>
+			<h:outputText value="#{pprBean.surname}"/> 
+			 <h:outputLabel for="city" value="City:*"/>
+			<h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
+				<f:selectItem itemLabel="Select one" itemValue=""></f:selectItem>	
+				<f:selectItems value="#{pprBean.cities}"/>
+			</h:selectOneMenu>
+			<p:message for="city"/>
+			<!-- 不选择国家，点击input of panel ,然后选择后会出现重复,在get方法上添加集合清空 -->
+			<h:outputText value="#{pprBean.city}"/> 
+			</h:panelGrid>
+		</p:panel> 
+		
+	 	<h:panelGrid columns="5">
+			<p:commandButton update="@(form)" value="All forms"/>
+			<p:commandButton update="@(form:last)" value="last Form"/>
+			<p:commandButton update="@(.ui-panel)" value="All Panel"/>
+			<p:commandButton process="@(.ui-panel :input)" update="@(.ui-panel)"  value="Inputs of Panel"/>
+			<p:commandButton process="@(.ui-panel :input :not(select))" update="@(.ui-panel)"   value="Inputs Except Select"/>
+		</h:panelGrid>
+  
+	</h:form>
+</h:body>
+</html>
+

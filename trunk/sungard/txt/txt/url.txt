@@ -1,0 +1,31 @@
+ away.emea.sungard.com
+ 
+ 
+    附件是一个JSF教程，下面是我们用的两个控件，你可以先看看，明天我会给你讲一下
+
+Icesoft: http://www.icesoft.org/
+
+Primefaces: http://primefaces.org/
+
+
+http://repo1.maven.org/maven2/
+
+http://mvnrepository.com
+
+http://10.253.46.75:8081/repo
+
+
+\\ap-sha-file01\PublicSoftware
+
+
+66.249.89.104 code.google.com 即可搞定了
+https://code.google.com/hosting/settings
+密码
+qQ9zW2nA3uV6 
+
+# Project members authenticate over HTTPS to allow committing changes.
+svn checkout https://zyong-first-project.googlecode.com/svn/trunk/ zyong-first-project --username zhangyong327@gmail.com
+
+When prompted, enter your generated googlecode.com password. 
+
+https://away.apac.sungard.com
